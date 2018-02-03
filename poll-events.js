@@ -1,6 +1,6 @@
 function startPolling(){
     // var provider = 'http://46.101.225.64:14265';
-    var provider = "http://iota.love:16000";
+    var provider = "https://nodes.thetangle.org:443";
     var iota = new IOTA({ 'provider': provider })
 
     function getRoot(){
