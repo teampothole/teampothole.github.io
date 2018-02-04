@@ -103,7 +103,16 @@ function precisionRound(number, precision) {
 
 function formatTimestamp(value){
     // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(value).toLocaleString("en-US");
+    var stamp = new Date(value);
+    var now = new Date();
+    var duration = now.getTime() - stamp.getTime();
+    duration = Math.round(duration/1000)
+
+    if (duration > 60){
+	return stamp.toLocaleString("en-US");
+    } else {
+	return stamp.toLocaleString("en-US") + ' > Latency: ' + duration + ' s';
+    }
 }
 
 function addLog(text) {
@@ -116,7 +125,7 @@ function addLog(text) {
     // ul.appendChild(li);
 }
 
-function addTimestamp(value) {
+function addTimestamp(value) {    
     addLog(formatTimestamp(value));
 }
 
