@@ -23,7 +23,7 @@ function startPolling(){
     const logData = data => {
 	var payload = JSON.parse(iota.utils.fromTrytes(data))
 	console.log(payload)
-	notifyBump(payload.message, payload.latitude);
+	notifyBump(payload.timestamp)
     }
 
     const execute = async (root) => {
@@ -39,6 +39,7 @@ function startPolling(){
 	    if (resp.nextRoot !== root) {		
 		console.log('next root => ' + resp.nextRoot)
 		root = resp.nextRoot
+		notifyNextRoot(root);
 	    }
 	}
     }
